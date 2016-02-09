@@ -30,9 +30,39 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\benchmark.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\misc\compare.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\misc\perf.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\rng-browser.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\rng.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\test\test.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\node_modules\uuid\uuid.js" />
+    <Compile Include="App_Data\jobs\triggered\mor2\run.js" />
     <Compile Include="run.js" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\.npmignore" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\.travis.yml" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\bench.gnu" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\bench.sh" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\benchmark-native.c" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\package.json" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\README.md" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\LICENSE.md" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\package.json" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\README.md" />
+    <Content Include="App_Data\jobs\triggered\mor2\node_modules\uuid\test\mocha.opts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\jobs\" />
+    <Folder Include="App_Data\jobs\triggered\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\node_modules\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\node_modules\uuid\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\node_modules\uuid\benchmark\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\node_modules\uuid\misc\" />
+    <Folder Include="App_Data\jobs\triggered\mor2\node_modules\uuid\test\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
