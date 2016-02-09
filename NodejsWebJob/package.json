@@ -2,7 +2,7 @@
   "name": "NodejsWebJob",
   "version": "0.0.0",
   "description": "NodejsWebJob",
-  "main": "app.js",
+  "main": "run.js",
   "author": {
     "name": "morshe",
     "email": ""
