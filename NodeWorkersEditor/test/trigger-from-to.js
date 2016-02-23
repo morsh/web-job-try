@@ -37,6 +37,7 @@ describe('Whole Pipeline', function () {
           // TODO:
           // Add to fix method for all environment variables
           process.env.DB_PASSWORD = process.env.DB_PASSWORD.replace(/_DOLLAR_/g, '$'); // travis jumbles up $ signs
+          console.info(process.env.DB_PASSWORD);
           config = require('x-config');
           return cb();
         }
