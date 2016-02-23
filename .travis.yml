@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+ - "4.2.4"
+ 
+os:
+ - linux
+ 
+install:
+  - node --version
+  - npm --version
+  - git --version
+  - npm install --no-optional
+  
+script: npm test
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
