@@ -28,13 +28,27 @@ function initDB() {
     
     pool = new ConnectionPool(poolConfig, configSql);
     pool.on('error', function (err) {
-        console.error('error connecting to sql', err);
+        console.warn('error connecting to sql', err);
     });
 }
 
 // Request a new connection from the connection pool
 function connect(cb) {
     return pool.acquire(cb);
+}
+
+function getReleaseCallback(connection, cb) {
+  return function () {
+    connection.release();
+    return cb.apply(null, arguments);
+  }
+}
+
+function logErrorReleaseConnection(err, connection, cb) {
+  console.error('error:', err);
+  console.log('releasing connection');
+  if (connection) connection.release();
+  return cb(err);
 }
 
 // Read environment variable settings file, and set all relevant variables in current process
@@ -88,14 +102,13 @@ function getTableRowCount(tableName, where, cb) {
     initDB();
     
     return connect(function (err, connection) {
-        if (err) return console.error(err, connection, cb);
+        if (err) return logErrorReleaseConnection(err, connection, cb);
 
         // If no error, then good to proceed.
-        console.info("Connected to DB");
         var query = "SELECT COUNT(*) FROM " + tableName + (where ? " WHERE " + where : "") + ";";
-        var request = new tedious.Request(query, function (error) {
+        var request = new tedious.Request(query, getReleaseCallback(connection, function (error) {
             if (error) return cb(error);
-        });
+        }));
         
         request.on('row', function (columns) {
             var result = 0;
@@ -137,13 +150,13 @@ function runDBScript(dbScript, cb) {
     var dbScriptSQL = fs.readFileSync(dbScript, 'utf8');
     
     return connect(function (err, connection) {
-        if (err) return console.error(err, connection, cb);
+        if (err) return logErrorReleaseConnection(err, connection, cb);
 
-        var request = new tedious.Request(dbScriptSQL, function (error) {
+        var request = new tedious.Request(dbScriptSQL, getReleaseCallback(connection, function (error) {
             if (error) return cb(error);
             
             return cb();
-        });
+        }));
         connection.execSql(request);
     });
 }

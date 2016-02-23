@@ -51,13 +51,19 @@ describe('Whole Pipeline', function () {
       // Initialize log
       function (cb) {
         
+        var domain = process.env.COMPUTERNAME || '';
+        var instance = log.getInstanceId();
+        console.info('Logging for domain', domain, 'on instance', instance);
+        
         return log.init({
-          domain: process.env.COMPUTERNAME || '',
-          instanceId: log.getInstanceId(),
+          domain: domain,
+          instanceId: instance,
           app: 'ci-testing',
           level: config.log.level,
           transporters: config.log.transporters
         }, cb);
+        
+        console.info('log initialized');
       },
 
       // Initializing queue service
@@ -232,7 +238,7 @@ describe('Whole Pipeline', function () {
           });
         },
 
-                // Periodic check that all sentences were scored
+        // Periodic check that all sentences were scored
         function (cb) {
           
           // TODO:
