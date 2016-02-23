@@ -59,7 +59,8 @@ function setEnvironmentVariables(setenvPath, cb) {
     
     reader.on('line', function (line) {
         if (line && line.toLowerCase().startsWith('set ')) {
-            process.env[line.substring(4, line.indexOf('='))] = line.substring(line.indexOf('=') + 1);
+          var value = line.substring(line.indexOf('=') + 1);
+          process.env[line.substring(4, line.indexOf('='))] = value.replace(/_DOLLAR_/g, '$'); // travis jumbles up $ signs
         }
     });
     
