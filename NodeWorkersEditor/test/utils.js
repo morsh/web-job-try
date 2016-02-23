@@ -156,7 +156,7 @@ function countLogMessages(options, cb) {
     
     // maximum level ('log' < 'info' < 'warn' < 'error')
     options.level = options.level || 'info';
-    options.farm = options.farm || 'MORSHE-X1';
+    options.farm = options.farm || process.env.COMPUTERNAME || '';
     options.limit = options.limit || '100';
     options.top = options.top || '100';
     options.transporters = require('x-config').log.transporters;
