@@ -280,6 +280,7 @@ ClientBin/
 *.publishsettings
 node_modules/
 !NodeWorkersEditor/node_modules/
+!NodeWorkersEditor/test/node_modules/
 NodeWorkersEditor/node_modules/*
 !NodeWorkersEditor/node_modules/x-*
 orleans.codegen.cs
