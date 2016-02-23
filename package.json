@@ -9,6 +9,6 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R xunit NodeWorkersEditor/test/ > test-reports.xml"
+    "test": "mocha NodeWorkersEditor/test/"
   }
 }
