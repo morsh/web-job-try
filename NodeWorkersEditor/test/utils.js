@@ -25,7 +25,7 @@ function initDB() {
         idleTimeout: 10000,
         log: false
     };
-    console.info('sql config', configSql);
+    
     pool = new ConnectionPool(poolConfig, configSql);
     pool.on('error', function (err) {
         console.warn('error connecting to sql', err);
@@ -59,8 +59,7 @@ function setEnvironmentVariables(setenvPath, cb) {
     
     reader.on('line', function (line) {
         if (line && line.toLowerCase().startsWith('set ')) {
-          var value = line.substring(line.indexOf('=') + 1);
-          process.env[line.substring(4, line.indexOf('='))] = value.replace(/_DOLLAR_/g, '$'); // travis jumbles up $ signs
+            process.env[line.substring(4, line.indexOf('='))] = line.substring(line.indexOf('=') + 1);
         }
     });
     

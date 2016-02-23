@@ -34,6 +34,9 @@ describe('Whole Pipeline', function () {
         
         // set env script should only appear in local environments (not in CI environments)
         if (!fs.existsSync(setEnvPath)) {
+          // TODO:
+          // Add to fix method for all environment variables
+          process.env.DB_PASSWORD = process.env.DB_PASSWORD.replace(/_DOLLAR_/g, '$'); // travis jumbles up $ signs
           config = require('x-config');
           return cb();
         }
