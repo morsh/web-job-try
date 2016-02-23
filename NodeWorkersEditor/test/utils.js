@@ -26,6 +26,8 @@ function initDB() {
         log: false
     };
     
+    config.info('sql config:', JSON.stringify(configSql));
+    
     pool = new ConnectionPool(poolConfig, configSql);
     pool.on('error', function (err) {
         console.warn('error connecting to sql', err);
