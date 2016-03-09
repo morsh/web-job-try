@@ -12,8 +12,9 @@ install:
   - npm install --no-optional
   
 before_script:
-  - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh
-  - sudo bash Ubuntu\ 14.04\ MSFT\ ODBC\ Driver.sh
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libboost-dev libboost-date-time-dev unixodbc-dev
+  - mysql --version 
   - sqlcmd –S miroculuspct.database.windows.net – U miroculus – P Pa$$word1 -Q "Select @@version;"
 
 script: npm test
