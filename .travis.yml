@@ -12,7 +12,8 @@ install:
   - npm install --no-optional
   
 before_script:
-  
+  - sudo apt-get install -qq unixodbc unixodbc-dev
+
 script: npm test
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
