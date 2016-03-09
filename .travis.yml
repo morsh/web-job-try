@@ -12,7 +12,8 @@ install:
   - npm install --no-optional
   
 before_script:
-  - sudo apt-get install -qq unixodbc unixodbc-dev
+  - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh
+  - sudo bash Ubuntu\ 14.04\ MSFT\ ODBC\ Driver.sh 
 
 script: npm test
 # uncomment this line if your project needs to run something other than `rake`:
