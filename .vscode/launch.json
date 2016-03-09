@@ -5,7 +5,7 @@
 			"name": "Launch",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}/app.js",
+			"program": "${workspaceRoot}app.js",
 			"stopOnEntry": false,
 			"args": [],
 			"cwd": "${workspaceRoot}",
@@ -24,11 +24,7 @@
 			"name": "Attach",
 			"type": "node",
 			"request": "attach",
-			"port": 5959,
-			"sourceMaps": false,
-			"outDir": null,
-			"localRoot": "${workspaceRoot}",
-			"remoteRoot": null
+			"port": 5858
 		}
 	]
 }

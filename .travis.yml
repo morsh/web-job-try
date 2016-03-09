@@ -12,7 +12,6 @@ install:
   - npm install --no-optional
   
 before_script:
-  - "cd NodeWorkersEditor && npm install && cd .."
   
 script: npm test
 # uncomment this line if your project needs to run something other than `rake`:

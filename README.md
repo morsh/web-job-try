@@ -1,6 +1,23 @@
 # miroculus-pipeline
 Miroculus pipeline components
 
+## Deployment
+1) Move to ARM mode in [azure-cli](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-install/) (It will automatically be set to deploy in your default subscription)
+2) Create a new resource group
+3) Create a new [parameters.prod.private.json](AzureDeployment/Templates/azuredeploy.parameters.json) file with the relevant values for deployment
+4) Run deployment 
+```
+azure config mode arm
+azure group create -n resource-group-name -l "West US"
+azure group deployment create -f AzureDeployment\Templates\azuredeploy.json -e AzureDeployment\Templates\parameters.prod.private.json resource-group-name deployment-name
+```
+
+## Testing
+Run tests by running
+```
+npm test
+```
+
 # Trigger New Document ID Check
 * Push the following message to the trigger queue to initiate a new check
 ```
@@ -8,14 +25,14 @@ Miroculus pipeline components
   "requestType": "trigger"
 }
 ```
-
+ 
 * If you want to specify a date range to check documents, use the following format
 ```
 {
   "requestType": "trigger",
   "data": {
-        "fromDate": "2014-02-01",
-        "toDate": "2014-02-14"
+        "from": "2014-02-01",
+        "to": "2014-02-14"
     }
 }
 ```
