@@ -13,7 +13,8 @@ install:
   
 before_script:
   - wget https://gallery.technet.microsoft.com/scriptcenter/SQLCMD-and-BCP-for-Ubuntu-c88a28cc/file/142121/1/Ubuntu%2014.04%20MSFT%20ODBC%20Driver.sh
-  - sudo bash Ubuntu\ 14.04\ MSFT\ ODBC\ Driver.sh 
+  - sudo bash Ubuntu\ 14.04\ MSFT\ ODBC\ Driver.sh
+  - sqlcmd –S miroculuspct.database.windows.net – U miroculus – P Pa$$word1 -Q "Select @@version;"
 
 script: npm test
 # uncomment this line if your project needs to run something other than `rake`:
